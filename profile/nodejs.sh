@@ -30,6 +30,10 @@ export PATH="$HOME/.heroku/node/bin:$PATH:$HOME/bin:$HOME/node_modules/.bin"
 export NODE_HOME="$HOME/.heroku/node"
 export NODE_ENV=${NODE_ENV:-production}
 
+export LD_LIBRARY_PATH=$HOME/.heroku/oracle/instantclient:${LD_LIBRARY_PATH:-}
+export OCI_LIB_DIR=$HOME/.heroku/oracle/instantclient
+export OCI_INC_DIR=$HOME/.heroku/oracle/instantclient/sdk/include
+
 calculate_concurrency
 
 export MEMORY_AVAILABLE=$MEMORY_AVAILABLE
