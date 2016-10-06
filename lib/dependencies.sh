@@ -1,3 +1,23 @@
+install_oracle_libraries(){
+  echo $HOME
+  local build_dir=${1:-}
+  echo "Installing oracle libraries"
+  mkdir -p $build_dir/oracle
+  cd $build_dir/oracle
+  local basic_download_url="https://myartifatcory.com/artifactory/thirdParty/oracle/instantclient-basic-linux.x64-12.1.0.2.0.zip"
+  local sdk_download_url="https://myartifatcory.com/artifactory/thirdParty/oracle/instantclient-sdk-linux.x64-12.1.0.2.0.zip"
+  curl -k "$basic_download_url" --silent --fail --retry 5 --retry-max-time 15 -o instantclient-basic.zip
+  echo "Downloaded [$basic_download_url]"
+  curl -k "$sdk_download_url" --silent --fail --retry 5 --retry-max-time 15 -o instantclient-sdk.zip
+  echo "Downloaded [$sdk_download_url]"
+  echo "unzipping libraries"
+  unzip instantclient-basic.zip
+  unzip instantclient-sdk.zip
+  mv instantclient_12_1 instantclient
+  cd instantclient
+  ln -s libclntsh.so.12.1 libclntsh.so
+}
+
 install_node_modules() {
   local build_dir=${1:-}
 
