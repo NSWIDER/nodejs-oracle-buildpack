@@ -5,6 +5,13 @@ create_default_env() {
   export NODE_ENV=${NODE_ENV:-production}
 }
 
+add_oracle_env(){
+    local build_dir="$1"
+        export LD_LIBRARY_PATH=$build_dir/oracle/instantclient:${LD_LIBRARY_PATH:-}
+    export OCI_LIB_DIR=$build_dir/oracle/instantclient
+    export OCI_INC_DIR=$build_dir/oracle/instantclient/sdk/include
+  }
+
 list_node_config() {
   echo ""
   printenv | grep ^NPM_CONFIG_ || true
