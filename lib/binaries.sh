@@ -11,7 +11,7 @@ install_nodejs() {
   local requested_version="$1"
   local resolved_version=$requested_version
   local dir="$2"
-
+  echo "Starting node install!"
   if needs_resolution "$requested_version"; then
     BP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
     versions_as_json=$(ruby -e "require 'yaml'; print YAML.load_file('$BP_DIR/manifest.yml')['dependencies'].select {|dep| dep['name'] == 'node' }.map {|dep| dep['version']}")
@@ -20,9 +20,9 @@ install_nodejs() {
   fi
 
   if [[ "$resolved_version" = "undefined" ]]; then
-    echo "Downloading and installing node $requested_version..."
+    echo "Now downloading and installing node $requested_version..."
   else
-    echo "Downloading and installing node $resolved_version..."
+    echo "Now downloading and installing node $resolved_version..."
   fi
   local heroku_url="https://s3pository.heroku.com/node/v$resolved_version/node-v$resolved_version-$os-$cpu.tar.gz"
   local download_url=`translate_dependency_url $heroku_url`
