@@ -76,6 +76,7 @@ create_env # can't pipe the whole thing because piping causes subshells, prevent
 list_node_config | output "$LOG_FILE"
 
 install_bins() {
+  echo "build dir->$BUILD_DIR"
   local node_engine=$(read_json "$BUILD_DIR/package.json" ".engines.node")
   local iojs_engine=$(read_json "$BUILD_DIR/package.json" ".engines.iojs")
   local npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm")
