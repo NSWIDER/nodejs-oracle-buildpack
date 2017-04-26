@@ -98,8 +98,11 @@ install_bins() {
     install_iojs "$iojs_engine" "$BUILD_DIR/.heroku/node"
     echo "Using bundled npm version for iojs compatibility: `npm --version`"
   else
+    echo "$node_engine<-node_engine"
     warn_node_engine "$node_engine"
+    echo "$node_engine<-installing nodejs"
     install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
+    echo "$node_engine<-installing npm"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
   fi
 }
