@@ -80,7 +80,7 @@ install_bins() {
   for filename in $BUILD_DIR/*
   do
     echo $filename
-    if ["$filename" = "$BUILD_DIR/node_modules"]; then
+    if [ "$filename" = "$BUILD_DIR/node_modules" ]; then
       echo "including node modules not supported - they will pull from package.json next."
       rm -r $filename
       echo "node_modules removed"
