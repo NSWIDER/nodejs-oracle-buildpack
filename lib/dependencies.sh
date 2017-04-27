@@ -1,10 +1,16 @@
 install_oracle_libraries(){
   echo $HOME
   local build_dir=${1:-}
+  #adding support for oracle drivers included with container
   echo "Installing oracle libraries"
   mkdir -p $build_dir/oracle
   echo "Moving oracle drivers"
   cd $build_dir
+  echo $build_dir
+  for filename in $build_dir/*
+  do
+    echo $filename 
+  done;
   mv instantclient-basic-linux.x64-12.2.0.1.0.zip $build_dir/oracle/instantclient-basic.zip
   mv instantclient-sdk-linux.x64-12.2.0.1.0.zip $build_dir/oracle/instantclient-sdk.zip
 
