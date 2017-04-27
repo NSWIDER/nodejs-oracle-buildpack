@@ -27,12 +27,23 @@ install_nodejs() {
   local heroku_url="https://s3pository.heroku.com/node/v$resolved_version/node-v$resolved_version-$os-$cpu.tar.gz"
   local download_url=`translate_dependency_url $heroku_url`
   local filtered_url=`filter_dependency_url $download_url`
-  echo "${download_url}<--download url"
-  echo "${filtered_url}<--filtered url"
-  echo "${heroku_url}<--heroku url"
-  
-  curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $heroku_url && false)
-  echo "Downloaded [$filtered_url]"
+  echo "${download_url}<--download uri" 
+  echo "${heroku_url}<--heroku uri"
+
+  if [[ $download_url == http*]]; then
+    curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $heroku_url && false)
+    echo "Downloaded [$filtered_url]"
+  else
+    BUILD_DIR=${1:-}
+    echo "$BUILD_DIR looking for $download_url"
+    if [ -f "$BUILD_DIR/$download_url" ]; then
+      echo "$download_url found" 
+      mv $download_url /tmp/node.tar.gz
+    else
+      echo "$download_url required next to package.json"
+      exit 1
+    fi 
+  fi 
   tar xzf /tmp/node.tar.gz -C /tmp
   rm -rf $dir/*
   mv /tmp/node-v$resolved_version-$os-$cpu/* $dir
