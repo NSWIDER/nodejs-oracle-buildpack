@@ -29,7 +29,7 @@ install_nodejs() {
   local filtered_url=`filter_dependency_url $download_url`
   echo "${download_url}<--download uri" 
   echo "${heroku_url}<--heroku uri"
-
+  #adding support for file name in uri field of manifest.yaml
   if [[ $download_url == http* ]]; then
     curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $heroku_url && false)
     echo "Downloaded [$filtered_url]"
