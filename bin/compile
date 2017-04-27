@@ -137,7 +137,7 @@ header "Restoring cache"
 restore_cache | output "$LOG_FILE"
 
 build_dependencies() {
-  install_oracle_libraries "$BUILD_DIR/.heroku"
+  install_oracle_libraries "$BUILD_DIR/.heroku" $BUILD_DIR
   if $PREBUILD; then
     echo "Prebuild detected (node_modules already exists)"
     rebuild_node_modules "$BUILD_DIR"
