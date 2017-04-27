@@ -16,7 +16,7 @@ install_oracle_libraries(){
   echo "unzipping libraries"
   unzip instantclient-basic.zip
   unzip instantclient-sdk.zip
-  mv instantclient_12_1 instantclient
+  mv instantclient_12_2 instantclient
   cd instantclient
   ln -s libclntsh.so.12.1 libclntsh.so
 }
