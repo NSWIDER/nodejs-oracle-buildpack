@@ -82,7 +82,7 @@ dependencies:
   - cflinuxfs2
 - name: node
   version: 6.10.2
-  uri: node-v6.10.2-linux-x64.tar
+  uri: node-v6.10.2-linux-x64.tar.gz
   md5: 391d226c2d57ea951e034df2bdb5bd29
   cf_stacks:
   - cflinuxfs2
