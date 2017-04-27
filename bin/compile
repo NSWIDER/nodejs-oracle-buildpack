@@ -107,7 +107,7 @@ install_bins() {
     echo "$node_engine<-node_engine"
     warn_node_engine "$node_engine"
     echo "$node_engine<-installing nodejs"
-    install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
+    install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node" $BUILD_DIR
     echo "$node_engine<-installing npm"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
   fi

@@ -34,7 +34,7 @@ install_nodejs() {
     curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $heroku_url && false)
     echo "Downloaded [$filtered_url]"
   else
-    BUILD_DIR="$( cd "$( dirname "${dir}" )" && cd .. && cd .. )"
+    local BUILD_DIR="$3"
     echo "$BUILD_DIR looking for $download_url"
     if [ -f "$BUILD_DIR/$download_url" ]; then
       echo "$download_url found" 
