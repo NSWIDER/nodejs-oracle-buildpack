@@ -82,7 +82,7 @@ dependencies:
   - cflinuxfs2
 - name: node
   version: 6.10.2
-  uri: https://s3pository.heroku.com/node/v6.10.2/node-v6.10.2-linux-x64.tar.gz
+  uri: node-v6.10.2-linux-x64.tar
   md5: 391d226c2d57ea951e034df2bdb5bd29
   cf_stacks:
   - cflinuxfs2
