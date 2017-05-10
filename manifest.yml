@@ -2,7 +2,7 @@
 language: nodejs
 default_versions:
 - name: node
-  version: 6.10.2
+  version: 7.10.0
 exclude_files:
 - ".git/"
 - ".gitignore"
