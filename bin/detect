@@ -22,10 +22,10 @@ else
   echo "instantclient-sdk-linux.x64-12.2.0.1.0.zip required next to package.json"
   RET=1
 fi 
-if [ -f "$1/node-v6.10.2-linux-x64.tar" ]; then
-  echo "node-v6.10.2-linux-x64.tar found" 
+if [ -f "$1/node-v7.10.0-linux-x64.tar" ]; then
+  echo "node-v7.10.0-linux-x64.tar found" 
 else
-  echo "node-v6.10.2-linux-x64.tar required next to package.json"
+  echo "node-v7.10.0-linux-x64.tar required next to package.json"
   RET=1
 fi 
 exit RET
